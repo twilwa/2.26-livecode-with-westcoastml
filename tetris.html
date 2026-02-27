@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #222;
+            color: white;
+            font-family: sans-serif;
+        }
+        canvas {
+            border: 2px solid #555;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="tetris" width="300" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('tetris');
+        const context = canvas.getContext('2d');
+        const COLS = 10;
+        const ROWS = 20;
+        const BLOCK_SIZE = 30; // 300/10 = 30, 600/20 = 30
+
+        // Scale context to draw 1 block = 1 unit instead of 30px
+        context.scale(BLOCK_SIZE, BLOCK_SIZE);
+
+        // Create empty 10x20 grid
+        const grid = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+
+        const piece = {
+            pos: {x: 3, y: 0},
+            matrix: [
+                [0, 1, 0],
+                [1, 1, 1],
+                [0, 0, 0],
+            ],
+            color: 'purple'
+        };
+
+        function drawGrid() {
+            context.fillStyle = '#000';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw grid lines (optional, for visibility)
+            context.strokeStyle = '#222';
+            context.lineWidth = 1 / BLOCK_SIZE;
+            for (let y = 0; y < ROWS; y++) {
+                for (let x = 0; x < COLS; x++) {
+                    context.strokeRect(x, y, 1, 1);
+                }
+            }
+        }
+
+        function drawMatrix(matrix, offset, color) {
+            matrix.forEach((row, y) => {
+                row.forEach((value, x) => {
+                    if (value !== 0) {
+                        context.fillStyle = color;
+                        context.fillRect(x + offset.x, y + offset.y, 1, 1);
+                        context.strokeStyle = '#fff';
+                        context.lineWidth = 1 / BLOCK_SIZE;
+                        context.strokeRect(x + offset.x, y + offset.y, 1, 1);
+                    }
+                });
+            });
+        }
+
+        let dropCounter = 0;
+        let dropInterval = 1000;
+        let lastTime = 0;
+
+        function update(time = 0) {
+            const deltaTime = time - lastTime;
+            lastTime = time;
+
+            dropCounter += deltaTime;
+            if (dropCounter > dropInterval) {
+                piece.pos.y++;
+                // Reset to top if it hits the bottom (basic loop for demo)
+                if (piece.pos.y > ROWS - 3) {
+                    piece.pos.y = 0;
+                }
+                dropCounter = 0;
+            }
+
+            drawGrid();
+            drawMatrix(piece.matrix, piece.pos, piece.color);
+            requestAnimationFrame(update);
+        }
+
+        update();
+    </script>
+</body>
+</html>
