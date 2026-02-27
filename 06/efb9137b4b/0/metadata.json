@@ -1,0 +1,50 @@
+{
+  "cli_version": "0.4.7",
+  "checkpoint_id": "06efb9137b4b",
+  "session_id": "6d12db5d-2f2a-4b98-abd8-058344bc0ba1",
+  "strategy": "manual-commit",
+  "created_at": "2026-02-27T04:01:17.236717Z",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "files_touched": [
+    ".factory/commands/opsx-apply.md",
+    ".factory/commands/opsx-archive.md",
+    ".factory/commands/opsx-bulk-archive.md",
+    ".factory/commands/opsx-continue.md",
+    ".factory/commands/opsx-explore.md",
+    ".factory/commands/opsx-ff.md",
+    ".factory/commands/opsx-new.md",
+    ".factory/commands/opsx-onboard.md",
+    ".factory/commands/opsx-sync.md",
+    ".factory/commands/opsx-verify.md",
+    ".factory/skills/openspec-apply-change/SKILL.md",
+    ".factory/skills/openspec-archive-change/SKILL.md",
+    ".factory/skills/openspec-bulk-archive-change/SKILL.md",
+    ".factory/skills/openspec-continue-change/SKILL.md",
+    ".factory/skills/openspec-explore/SKILL.md",
+    ".factory/skills/openspec-ff-change/SKILL.md",
+    ".factory/skills/openspec-new-change/SKILL.md",
+    ".factory/skills/openspec-onboard/SKILL.md",
+    ".factory/skills/openspec-sync-specs/SKILL.md",
+    ".factory/skills/openspec-verify-change/SKILL.md",
+    "config.yaml"
+  ],
+  "agent": "Claude Code",
+  "turn_id": "bcdcb49ab188",
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-02-27T04:01:17.175429Z",
+    "agent_lines": 96,
+    "human_added": 4557,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 4653,
+    "agent_percentage": 2.0631850419084463
+  }
+}
